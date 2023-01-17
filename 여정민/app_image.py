@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request
-from flask_ngrok import run_with_ngrok
+# from flask_ngrok import run_with_ngrok  # port를 우회해서 접속가능한 도메인을 할당해주는 알고리즘
 import os
 from PIL import Image
 
 app = Flask(__name__)
-run_with_ngrok(app)
+# run_with_ngrok(app)
 
 '''
 이미지 처리 함수
@@ -21,7 +21,7 @@ def image_change_bw(image):
 '''
 플라스크
 '''
-@app.route("/index")
+@app.route("/")
 def index():
     return render_template('image.html')
 
@@ -55,4 +55,4 @@ def preprocessing():
         return render_template('image.html', label=image_path)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
